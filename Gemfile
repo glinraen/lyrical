@@ -41,7 +41,7 @@ group :development, :test do
   gem 'factory_girl_rails'
   gem 'capybara'
   gem 'rspec'
-  gem 'devise'
+  gem 'handlebars-rails'
 end
 
 group :development do
