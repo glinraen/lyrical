@@ -46,6 +46,7 @@ GEM
       ember-source
       execjs
       handlebars-source
+    bcrypt (3.1.11)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
     builder (3.2.2)
@@ -225,6 +226,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  bcrypt (~> 3.1.7)
   capybara
   coffee-rails (~> 4.1.0)
   factory_girl_rails
