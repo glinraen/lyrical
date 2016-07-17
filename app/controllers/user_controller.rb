@@ -10,15 +10,24 @@ class UserController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
+    @users = User.find(params[:id])
+    if current_user == nil
+      redirect_to sign_in_path
+    else
+      render :show
+    end
   end
 
   # GET /users/new
   def new
     @user = User.new
+    render :new
   end
 
   # GET /users/1/edit
   def edit
+  	@user = User.find(params[:id])
+    render :user
   end
 
   # POST /users
@@ -71,5 +80,4 @@ class UserController < ApplicationController
     def user_params
       params.require(:user).permit(:user_name, :email, :password_digest)
     end
-
 end
