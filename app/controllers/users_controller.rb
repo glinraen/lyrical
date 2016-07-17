@@ -14,7 +14,7 @@ class UserController < ApplicationController
     if current_user == nil
       redirect_to sign_in_path
     else
-      render :show
+      render :user
     end
   end
 
