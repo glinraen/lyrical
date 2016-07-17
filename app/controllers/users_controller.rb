@@ -1,11 +1,11 @@
-class UserController < ApplicationController
+class UsersController < ApplicationController
 	before_action :set_user, only: [:show, :edit, :update, :destroy]
 
 	# GET /users
   # GET /users.json
-  def index
-    @users = User.all
-  end
+  #def index
+    #@users = User.all
+  #end
 
   # GET /users/1
   # GET /users/1.json
@@ -14,7 +14,7 @@ class UserController < ApplicationController
     if current_user == nil
       redirect_to sign_in_path
     else
-      render :user
+      render :user_path
     end
   end
 
