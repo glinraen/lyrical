@@ -1,0 +1,22 @@
+<!-- Nav Bar -->
+<div class="top-bar folk_bar">
+  <div class="top-bar-left">
+    <a href="/"><img src="/assets/images/lyricalblue.png"/></a> 
+
+  </div>
+  
+
+<div class="top-bar-right">
+    <ul class="menu">
+      <% if current_user %>
+        <li class="menu"><%= button_to 'My Profile', user_path(current_user), method: :get, class: "button" %></li>
+        <li class="menu"><%= button_to "Members", users_path, method: :get, class: "button folk_button" %></li>
+        
+        <li class="menu"><%= button_to "Sign Out", sessions_path, method: :delete, class: "button folk_button" %></li>
+      <% else %>
+        <li class="menu"><%= button_to "Login", sign_in_path, method: :get, class: "button folk_button" %></li>
+        <li class="menu"><%= button_to "Sign up", new_user_path, method: :get, class: "button folk_button" %></li>
+      <% end %>
+    </ul>
+  </div>
+</div>
