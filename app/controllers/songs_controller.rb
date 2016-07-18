@@ -34,7 +34,7 @@ class SongsController < ApplicationController
       @user = current_user
       # Get song/s
       song_lyricsimage = song_params[:image]
-      original_filename = "something.png"
+      original_filename = "something.pdf"
       # Create temporary file
       @file = Pull_tempfile.pull_tempfile(url: song_lyricsimage, original_filename: original_filename)
       # Create empty array for lyrics text
@@ -58,7 +58,7 @@ class SongsController < ApplicationController
         format.html { render :new }
         format.json { render json: @song.errors, status: :unprocessable_entity }
       end
-      
+    end 
   end
 
   # PATCH/PUT /songs/1
@@ -107,6 +107,7 @@ class SongsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def song_params
-      params.require(:song).permit(:title, :lyrics, :origin, :image)
+      params.require(:song).permit(:title, :lyrics, :origin, :vision)
     end
+  end
 end
