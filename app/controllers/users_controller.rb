@@ -11,11 +11,8 @@ class UsersController < ApplicationController
   # GET /users/1.json
   def show
     @users = User.find(params[:id])
-    if current_user == nil
-      redirect_to sign_in_path
-    else
-      render :user_path
-    end
+    # @user = current_user
+      # render :user
   end
 
   # GET /users/new
@@ -27,26 +24,21 @@ class UsersController < ApplicationController
   # GET /users/1/edit
   def edit
   	@user = User.find(params[:id])
-    render :user
+    redirect_to :edit_user
   end
 
   # POST /users
   # POST /users.json
   def create
     @user = User.new(user_params)
-
     #respond_to do |format|
       if @user.save
-        #format.html { redirect_to @user, notice: 'User was successfully created.' }
-        #format.json { render :show, status: :created, location: @user }
-        session[:user_id] = user.id
-        redirect_to '/'
+        login(user)
+        flash[:success] = "Welcome to Hell!"
+        redirect_to :user
       else
-       # format.html { render :new }
-       # format.json { render json: @user.errors, status: :unprocessable_entity }
-        redirect_to 'sign_in_path'
+        redirect_to new_user_path, flash: {error: @user.errors.full_messages.to_sentence}
       end
-    end
   end
 
   # PATCH/PUT /users/1
@@ -62,6 +54,7 @@ class UsersController < ApplicationController
       end
     end
   end
+
 
   # DELETE /users/1
   # DELETE /users/1.json
@@ -83,4 +76,4 @@ class UsersController < ApplicationController
     def user_params
       params.require(:user).permit(:user_name, :email, :password)
     end
-
+end

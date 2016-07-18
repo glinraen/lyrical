@@ -12,6 +12,7 @@ module SessionsHelper
   def logged_in?
     	if current_user == nil
       	redirect_to sign_in_path
+    end
   end
 
   def logout
@@ -19,5 +20,4 @@ module SessionsHelper
     @current_user = nil
   end
 
-end
 end
