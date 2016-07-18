@@ -1,6 +1,8 @@
 class SongsController < ApplicationController
   before_action :set_song, only: [:show, :edit, :update, :destroy]
-
+  require 'pull_tempfile'
+  require 'json'
+  
   # GET /songs
   # GET /songs.json
   def index
@@ -10,6 +12,8 @@ class SongsController < ApplicationController
   # GET /songs/1
   # GET /songs/1.json
   def show
+     @song = Song.find(params[:id])
+    render :show
   end
 
   # GET /songs/new
@@ -24,7 +28,27 @@ class SongsController < ApplicationController
   # POST /songs
   # POST /songs.json
   def create
+
     @song = Song.new(song_params)
+      # Get user
+      @user = current_user
+      # Get song/s
+      song_lyricsimage = song_params[:image]
+      original_filename = "something.png"
+      # Create temporary file
+      @file = Pull_tempfile.pull_tempfile(url: song_lyricsimage, original_filename: original_filename)
+      # Create empty array for lyrics text
+      @lyrics_array = [];
+      # Hit the cloud vision API with wrapper
+      @song_tags = GoogleCloudVision::Classifier.new(ENV["API_KEY"],
+      [{ image: './text.png', detection: 'TEXT_DETECTION', max_results: 10 }]).response["responses"][0]["lyrictext"].each do |tag|
+        @dlyrics_array.push(tag["lyrics"])
+      end
+
+      if @song.save
+        @lyrics_array.each do |value|
+          @tag = Tag.new({song_id: @song.id, lyrics: value})
+        end
 
     respond_to do |format|
       if @song.save
@@ -34,7 +58,7 @@ class SongsController < ApplicationController
         format.html { render :new }
         format.json { render json: @song.errors, status: :unprocessable_entity }
       end
-    end
+      
   end
 
   # PATCH/PUT /songs/1

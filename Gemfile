@@ -23,10 +23,15 @@ gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'acts-as-taggable-on', '~> 3.4'
-# gem 'google-api-client', '0.9'
 
+
+# google api auth
 gem 'foundation-rails'
 gem 'handlebars-rails'
+gem 'google_cloud_vision'
+gem 'tempdir'
+gem 'pull_tempfile'
+gem 'dotenv'
 
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
