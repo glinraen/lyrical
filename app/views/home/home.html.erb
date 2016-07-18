@@ -1,0 +1,24 @@
+
+<div class="container">
+      
+            <p class="home-text">Tradional Folk Music for the masses.<br>
+            
+          
+            <br>
+            Sign-up to create a profile. Then you can add songs via pdf or text<br>
+            <br>
+            It’s free and secure to sign up. Get started searching songs and building a collection.</p>
+
+     
+        <div class="button-group">
+          <%= button_to "Login", sign_in_path, method: :get, class: "button" %>
+          <%= button_to "Sign Up", new_user_path, method: :get, class: "button" %>
+        </div>
+
+        <div class ="tags-cloud glassy-bg">
+          <h4>Tag Cloud</h4>
+          <% tag_cloud Tag.counts, %w{css1 css2 css3 css4} do | tag, css_class | %>
+            <% link.to tag.name, tag_path(tag_name), class:css_class %>
+          <% end %>
+      
+</div>
