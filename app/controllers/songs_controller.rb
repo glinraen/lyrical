@@ -1,12 +1,12 @@
 class SongsController < ApplicationController
-  before_action :set_song, only: [:show, :edit, :update, :destroy]
+
   require 'pull_tempfile'
   require 'json'
   
   # GET /songs
   # GET /songs.json
   def index
-    @songs = Song.all
+    @song = Song.all
   end
 
   # GET /songs/1
@@ -28,10 +28,9 @@ class SongsController < ApplicationController
   # POST /songs
   # POST /songs.json
   def create
-
-    @song = Song.new(song_params)
+    # @song = Song.new(song_params)
       # Get user
-      @user = current_user
+      @user = @current_user
       # Get song/s
       song_lyricsimage = song_params[:image]
       original_filename = "something.pdf"
@@ -41,14 +40,17 @@ class SongsController < ApplicationController
       @lyrics_array = [];
       # Hit the cloud vision API with wrapper
       @song_tags = GoogleCloudVision::Classifier.new(ENV["API_KEY"],
-      [{ image: './text.png', detection: 'TEXT_DETECTION', max_results: 10 }]).response["responses"][0]["lyrictext"].each do |tag|
-        @dlyrics_array.push(tag["lyrics"])
+      [{ image: @file, detection: 'TEXT_DETECTION', max_results: 10 }]).response["responses"][0]["lyrictext"].each do |tag|
+        @lyrics_array.push(tag["lyrics"])
       end
+
 
       if @song.save
         @lyrics_array.each do |value|
           @tag = Tag.new({song_id: @song.id, lyrics: value})
         end
+      end
+    end
 
     respond_to do |format|
       if @song.save
@@ -59,7 +61,7 @@ class SongsController < ApplicationController
         format.json { render json: @song.errors, status: :unprocessable_entity }
       end
     end 
-  end
+
 
   # PATCH/PUT /songs/1
   # PATCH/PUT /songs/1.json
@@ -97,17 +99,16 @@ class SongsController < ApplicationController
   def tag_cloud
     @tags = Song.tag_counts_on(:tags)
   end
-
+   # Use callbacks to share common setup or constraints between actions.
+  # def set_song
+      # @song = Song.find(params[:id])
+  # end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_song
-      @song = Song.find(params[:id])
-    end
-
+  
     # Never trust parameters from the scary internet, only allow the white list through.
     def song_params
-      params.require(:song).permit(:title, :lyrics, :origin, :vision)
+      params.require(:song).permit(:title, :lyrics, :origin)
     end
-  end
+
 end
