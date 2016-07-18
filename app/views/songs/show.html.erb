@@ -20,5 +20,10 @@
   <%= @song.image %>
 </p>
 
+<% @song.tags.any? %>
+  <% @song.tags.each do |tag| %>
+  <%= link_to tag.name, tagged_url(:tag => tag.name) %>
+<% end %>
+
 <%= link_to 'Edit', edit_song_path(@song) %> |
 <%= link_to 'Back', songs_path %>

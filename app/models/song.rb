@@ -1,4 +1,3 @@
 class Song < ActiveRecord::Base
-	has_many :taggings
-	has_many :tags, through: :taggings
+	acts_as_taggable_on :tags
 end

@@ -9,4 +9,7 @@ Rails.application.routes.draw do
   post '/sessions', to: 'sessions#create'
   delete '/sessions', to: 'sessions#destroy', as: 'delete'
 
+  # routes for tags
+  get 'tagged', to: 'songs#tagged', as: 'tagged'
+
 end
