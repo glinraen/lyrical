@@ -10,28 +10,37 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="field">
+<div class="row form">
+  <div class="large-6 columns">
+    <div class="field">
     <%= f.label :title %><br>
     <%= f.text_field :title %>
-  </div>
-  <div class="field">
+    </div>
+    <div class="field">
     <%= f.label :lyrics %><br>
     <%= f.text_field :lyrics %>
-  </div>
-  <div class="field">
+    </div>
+    <div class="field">
     <%= f.label :origin %><br>
     <%= f.text_field :origin %>
-  </div>
-  <div class="field">
+    </div>
+    <div class="field">
     <%= f.label :image %><br>
-    <%= f.text_field :image %>
+    <%= f.text_field :image, placeholder: "Click Choose File to Upload" %>
+    </div>
+    <div class="container">
+   <%= f.hidden_field :image, role: 'uploadcare-uploader' %>
   </div>
 
   <%= f.label :tags %>
   <%= f.text_field :tag_list %>
-  
-  <div class="actions">
+
+    <div class="actions">
     <%= f.submit %>
+
+    </div>
   </div>
+</div>
 <% end %>
+
+

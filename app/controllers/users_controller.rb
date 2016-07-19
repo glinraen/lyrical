@@ -11,8 +11,19 @@ class UsersController < ApplicationController
   # GET /users/1.json
   def show
     @users = User.find(params[:id])
+
     # @user = current_user
       # render :user
+
+    #if current_user == nil
+      #redirect_to sign_in_path
+    #else
+      #render :user_path
+    
+    @user = User.find(params[:id])
+    @song = Song.all
+
+
   end
 
   # GET /users/new
