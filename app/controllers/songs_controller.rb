@@ -35,7 +35,7 @@ class SongsController < ApplicationController
       song_lyricsimage = song_params[:image]
       original_filename = "something.pdf"
       # Create temporary file
-      @file = Pull_tempfile.pull_tempfile(url: song_lyricsimage, original_filename: original_filename)
+      @file = Pulltempfile.pull_tempfile(url: song_lyricsimage, original_filename: original_filename)
       # Create empty array for lyrics text
       @lyrics_array = [];
       # Hit the cloud vision API with wrapper
