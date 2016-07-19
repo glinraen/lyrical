@@ -1,7 +1,7 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Title:</strong>
+  <h4>Title:</h4>
   <%= @song.title %>
 </p>
 
@@ -15,12 +15,14 @@
   <%= @song.origin %>
 </p>
 
-
-
+<strong>Tags</strong>
+<p>
 <% @song.tags.any? %>
-  <% @song.tags.each do |tag| %>
-  <%= link_to tag.name, tagged_url(:tag => tag.name) %>
+	<% @song.tag_list.each do |tag| %>
+	<%= link_to tag, tagged_path(tag: tag) %>
 <% end %>
+</p>
+
 
 <%= link_to 'Edit', edit_song_path(@song) %> |
 <%= link_to 'Back', songs_path %>

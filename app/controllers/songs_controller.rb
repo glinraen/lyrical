@@ -12,7 +12,7 @@ class SongsController < ApplicationController
   # GET /songs/1
   # GET /songs/1.json
   def show
-     @song = Song.find(params[:id])
+    @song = Song.find(params[:id])
     render :show
   end
 
@@ -23,6 +23,8 @@ class SongsController < ApplicationController
 
   # GET /songs/1/edit
   def edit
+    @song = Song.find(params[:id])
+    render :edit
   end
 
   # POST /songs
@@ -108,7 +110,7 @@ class SongsController < ApplicationController
   
     # Never trust parameters from the scary internet, only allow the white list through.
     def song_params
-      params.require(:song).permit(:title, :lyrics, :origin)
+      params.require(:song).permit(:title, :lyrics, :origin, :tag_list)
     end
 
 end

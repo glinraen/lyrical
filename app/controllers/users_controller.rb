@@ -10,7 +10,7 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
-    @users = User.find(params[:id])
+    @user = User.find(params[:id])
 
     # @user = current_user
       # render :user
@@ -20,8 +20,22 @@ class UsersController < ApplicationController
     #else
       #render :user_path
     
-    @user = User.find(params[:id])
-    @song = Song.all
+    # @songs = Song.where(user_id: params[:id])
+    # # @tags = Tag.where(user_id: params[:id])
+    # render :show
+
+    # @songs = Song.active.includes(:titles, :tags).all
+ 
+ 
+ 
+     respond_to do |format|
+ 
+          format.html # index.html.erb
+ 
+          format.json { render json: @shippings }
+ 
+     end
+    
 
 
   end
