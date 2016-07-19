@@ -1,6 +1,6 @@
 <p>
-  <strong>User Name:</strong>
-  <%= @user.user_name %>
+  <h3>Welcome, <%= @user.user_name %>!</h3>
+  
 </p>
 <p>
 	<strong>Email:</strong>
@@ -12,22 +12,26 @@
 </p>
 
 <p>
-	
+<%= link_to 'Edit Your Email and/or Password', edit_user_path(@user) %> |
+<%= link_to 'Back', user_path %>
+</p>
 
+<div class="container">
+<h5>Your Songs</h5>
+<br>
 <% @user.songs.each do |song| %>
       <tr>
-        <td><%= song.title %></td>
+        <td><strong><%= song.title %></strong></td>
         <td><%= song.lyrics %></td>
         <td><%= song.origin %></td>
         <td><%= song.image %></td>
+        <br>
         <td><%= link_to 'Show', song %></td>
         <td><%= link_to 'Edit', edit_song_path(song) %></td>
         <td><%= link_to 'Destroy', song, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
+</div>
 
 
 
-
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', user_path %>
