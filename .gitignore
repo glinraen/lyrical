@@ -14,3 +14,4 @@
 
 client_id.json
 secrets.yml
+.env

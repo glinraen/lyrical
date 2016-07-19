@@ -1,7 +1,4 @@
 class SongsController < ApplicationController
-
-  require 'pull_tempfile'
-  require 'json'
   
   # GET /songs
   # GET /songs.json
@@ -37,7 +34,8 @@ class SongsController < ApplicationController
       song_lyricsimage = song_params[:image]
       original_filename = "something.pdf"
       # Create temporary file
-      @file = Pulltempfile.pull_tempfile(url: song_lyricsimage, original_filename: original_filename)
+      binding.pry 
+      @file = PullTempfile.pull_tempfile(url: song_lyricsimage, original_filename: original_filename)
       # Create empty array for lyrics text
       @lyrics_array = [];
       # Hit the cloud vision API with wrapper
@@ -110,7 +108,7 @@ class SongsController < ApplicationController
   
     # Never trust parameters from the scary internet, only allow the white list through.
     def song_params
-      params.require(:song).permit(:title, :lyrics, :origin, :tag_list)
+      params.require(:song).permit(:title, :lyrics, :origin, :tag_list, :image)
     end
 
 end
