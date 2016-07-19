@@ -2,25 +2,17 @@
 	<h2 class="profileTitle titles">Sign Up</h2>
   <br>
   <%= form_for(@user) do |f| %>
-    <% if @user.errors.any? %>
-      <div id="error_explanation">
-        <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
-
-        <ul>
-        <% @user.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-        </ul>
-      </div>
-    <% end %>
+   
+</div>
+   
 
     <div class="row form">
     	<div class="large-6 columns">
-    		<%= f.label :user_name, class: "formTitle" %>
-    		<% f.text_field :user_name %>
-    		<%= f.label :email, class: "formTitle" %>
-       		<%= f.text_field :email %>
-       		<%= f.label :password, class: "formTitle" %>
-        	<%= f.password_field :password %>
-    </div>
-
+    		
+    		<%= f.text_field :user_name, placeholder: "Username", class: "form-control"  %>
+        <%= f.text_field :email, placeholder: "Email", class: "form-control"  %>
+        <%= f.password_field :password, placeholder: "Password", class: "form-control"  %>
+        	<div>
+          <button type="submit" class="button interests">Submit</button>
+          </div>
+    <% end %>

@@ -11,9 +11,19 @@
     <%= csrf_meta_tags %>
   </head>
 
+  
   <body>
 
+    <%= render 'header' %>
+      <% if flash[:notice] || flash[:errors] %>
+        <div class="notice"><%= flash[:notice] %></div>
+        <div class="errors"><%= flash[:errors] %></div>
+      <% end %>
+
+
     <%= yield %>
+
+    <% render 'footer' %>
 
   </body>
 </html>

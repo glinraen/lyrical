@@ -14,8 +14,13 @@
  *= require_self
  *= require foundation_and_overrides
  *= require songs
+ *= require home
  */
  /*= require foundation */
+
+body {
+    background-image: url("/assets/images/worldmusic.jpg");
+}
 
 .css1 {
  	font-size: 1.0em;
@@ -31,4 +36,16 @@
 
 .css4 {
  	font-size: 1.6em; 
+}
+
+@import "compass/css3";
+
+body {
+  background: #F0F0F3;
+}
+.login-box {
+  background: #fff;
+  border: 1px solid #ddd; 
+  margin: 100px 0;
+  padding: 40px 20px 0 20px;
 }
