@@ -25,12 +25,18 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'acts-as-taggable-on', '~> 3.4'
 
 
+# google api auth
 gem 'foundation-rails'
 gem 'handlebars-rails'
+gem 'google_cloud_vision'
+gem 'tempdir'
+gem 'pull_tempfile'
+gem 'dotenv'
 
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 
+gem 'responders', '~> 2.0'
 # Use Unicorn as the app server
 # gem 'unicorn'
 
