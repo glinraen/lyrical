@@ -8,13 +8,11 @@
 
     <div class="row form">
     	<div class="large-6 columns">
-    		<%= f.label :user_name, class: "formTitle" %>
-    		<%= f.text_field :user_name %>
-    		<%= f.label :email, class: "formTitle" %>
-       		<%= f.text_field :email %>
-       		<%= f.label :password, class: "formTitle" %>
-        	<%= f.password_field :password %>
-          <div class="actions">
-          <%= f.submit %>
-    </div>
+    		
+    		<%= f.text_field :user_name, placeholder: "Username", class: "form-control"  %>
+        <%= f.text_field :email, placeholder: "Email", class: "form-control"  %>
+        <%= f.password_field :password, placeholder: "Password", class: "form-control"  %>
+        	<div>
+          <button type="submit" class="button interests">Submit</button>
+          </div>
     <% end %>
