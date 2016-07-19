@@ -31,6 +31,9 @@ gem 'handlebars-rails'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 
+# upload care for image upload
+gem 'uploadcare-rails', "~> 1.0"
+
 # Use Unicorn as the app server
 # gem 'unicorn'
 

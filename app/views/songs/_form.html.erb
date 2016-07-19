@@ -30,8 +30,15 @@
 
   <%= f.label :tags %>
   <%= f.text_field :tag_list %>
+
+  <div class="container">
+   <%= f.hidden_field :image, role: 'uploadcare-uploader' %>
+  </div>
   
   <div class="actions">
     <%= f.submit %>
   </div>
 <% end %>
+
+
+  
