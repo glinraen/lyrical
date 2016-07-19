@@ -11,33 +11,10 @@ class UsersController < ApplicationController
   # GET /users/1.json
   def show
     @user = User.find(params[:id])
-
-    # @user = current_user
-      # render :user
-
-    #if current_user == nil
-      #redirect_to sign_in_path
-    #else
-      #render :user_path
-    
-    # @songs = Song.where(user_id: params[:id])
-    # # @tags = Tag.where(user_id: params[:id])
-    # render :show
-
-    # @songs = Song.active.includes(:titles, :tags).all
- 
- 
- 
      respond_to do |format|
- 
           format.html # index.html.erb
- 
           format.json { render json: @shippings }
- 
      end
-    
-
-
   end
 
   # GET /users/new
