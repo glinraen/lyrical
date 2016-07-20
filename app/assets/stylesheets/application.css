@@ -15,6 +15,7 @@
  *= require foundation_and_overrides
  *= require songs
  *= require home
+ *= require scaffolds
  */
  /*= require foundation */
 
