@@ -34,7 +34,7 @@ class SongsController < ApplicationController
       song_lyricsimage = song_params[:image]
       original_filename = "something.pdf"
       # Create temporary file
-      binding.pry 
+    
       @file = PullTempfile.pull_tempfile(url: song_lyricsimage, original_filename: original_filename)
       # Create empty array for lyrics text
       @lyrics_array = [];
