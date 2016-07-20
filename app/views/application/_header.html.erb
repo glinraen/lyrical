@@ -8,9 +8,9 @@
 
 <div class="top-bar-right">
     <ul class="menu">
-      <li class="menu"><%= button_to "Songs List", songs_path, method: :get, class: "button folk_button" %></li>
+      <li class="menu"><%= button_to "All Songs List", songs_path, method: :get, class: "button folk_button" %></li>
       <% if current_user %>
-        <li class="menu"><%= button_to 'My Profile', user_path(current_user), method: :get, class: "button folk_button" %></li>
+        <li class="menu"><%= button_to 'My Songs', user_path(current_user), method: :get, class: "button folk_button" %></li>
         
         
         <li class="menu"><%= button_to "Sign Out", sessions_path, method: :delete, class: "button folk_button" %></li>
