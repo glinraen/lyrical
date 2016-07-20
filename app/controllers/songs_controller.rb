@@ -29,10 +29,10 @@ class SongsController < ApplicationController
   def create
     # @song = Song.new(song_params)
       # Get user
-      @user = @current_user
+      @user = current_user
       # Get song/s
       song_lyricsimage = song_params[:image]
-      original_filename = "something.pdf"
+      original_filename = "something.png"
       # Create temporary file
     
       @file = PullTempfile.pull_tempfile(url: song_lyricsimage, original_filename: original_filename)
@@ -40,7 +40,7 @@ class SongsController < ApplicationController
       @lyrics_array = [];
       # Hit the cloud vision API with wrapper
       @song_tags = GoogleCloudVision::Classifier.new(ENV["API_KEY"],
-      [{ image: @file, detection: 'TEXT_DETECTION', max_results: 10 }]).response["responses"][0]["lyrictext"].each do |tag|
+      [{ image: @file, detection: 'TEXT_DETECTION', max_results: 10 }]).response["responses"][0]["textAnnotations"].each do |tag|
         @lyrics_array.push(tag["lyrics"])
       end
 
