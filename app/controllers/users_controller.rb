@@ -33,14 +33,15 @@ class UsersController < ApplicationController
   # POST /users.json
   def create
     @user = User.new(user_params)
+		# User.save(:user_id)
     #respond_to do |format|
-      if @user.save
-        login(@user)
-        flash[:success] = "Welcome to Hell!"
-        redirect_to :user
-      else
-        redirect_to new_user_path, flash: {error: @user.errors.full_messages.to_sentence}
-      end
+			@user.save
+    	login(@user)
+        flash[:success] = "Welcome to Lyrical!"
+        redirect_to '/users/' + @user.id.to_s
+      #else
+        #redirect_to new_user_path, flash: {error: @user.errors.full_messages.to_sentence}
+      #end
   end
 
   # PATCH/PUT /users/1
@@ -76,6 +77,6 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:user_name, :email, :password)
+      params.require(:user).permit(:email, :password)
     end
 end

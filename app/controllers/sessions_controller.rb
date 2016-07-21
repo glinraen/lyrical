@@ -1,13 +1,18 @@
 class SessionsController < ApplicationController
-	
+
   def new
     @user = User.new
     render :new
   end
 
   def create
+		puts "params: "
+		p params["user"]["email"]
     user_params = params.require(:user).permit(:email, :password)
-    @user = User.confirm(user_params)
+		User.create(user_params)
+    @user = User.find_by(email: params["user"][:email])
+		puts "created a user?"
+		p @user
     if @user
       login(@user)
       redirect_to @user
@@ -18,7 +23,7 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    logout  
+    logout
     redirect_to root_path
   end
 
