@@ -55,6 +55,7 @@ class SongsController < ApplicationController
 
     respond_to do |format|
       if @song.save
+        @user.songs.push(@song)
         format.html { redirect_to @song, notice: 'Song was successfully created.' }
         format.json { render :show, status: :created, location: @song }
       else

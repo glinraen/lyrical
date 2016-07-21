@@ -2,20 +2,21 @@
   <h3>Welcome, <%= @user.user_name %>!</h3>
 
 </p>
-<p>
+<div class"container">
 	<strong>Email:</strong>
 	<%= @user.email %>
-</p>
+</div>
 
-
-<p>
+<br>
 <%= link_to 'Edit Your User Info', edit_user_path(@user) %> |
 <%= link_to 'Back', user_path %>
-</p>
-
-<div class="container">
-<h5>Your Songs</h5>
 <br>
+<br>
+<div class"container">
+<h5>Your Songs</h5>
+</div>
+<br>
+<div class="row">
 <% @user.songs.each do |song| %>
       <tr>
         <td><strong><%= song.title %></strong></td>
@@ -27,8 +28,10 @@
         <td><%= link_to 'Edit', edit_song_path(song) %></td>
         <td><%= link_to 'Destroy', song, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
+      <br><br>
     <% end %>
 </div>
-<div>
+<br>
+<div class="row">
   <%= button_to 'New Song', new_song_path, :method => :get%>
 </div>
