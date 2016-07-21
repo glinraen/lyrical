@@ -35,7 +35,6 @@ class SongsController < ApplicationController
       song_lyricsimage = song_params[:image]
       original_filename = "something.png"
       # Create temporary file
-      # TODO: check to makesure song_lyricsimage exists before sending request
       @file = PullTempfile.pull_tempfile(url: song_lyricsimage, original_filename: original_filename)
       # Create empty array for lyrics text
       @lyrics_array = [];
@@ -111,7 +110,7 @@ class SongsController < ApplicationController
   private
 
     # Never trust parameters from the scary internet, only allow the white list through.
-    # took tag_list out 
+    # took tag_list out
     def song_params
       params.require(:song).permit(:title, :lyrics, :origin, :image)
     end
