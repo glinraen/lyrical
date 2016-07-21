@@ -16,16 +16,12 @@
 </p>
 </div>
 
-<div class="row">
-<p>
-<% @song.tags.any? %>
-	<% @song.tag_list.each do |tag| %>
-	<%= link_to tag, tagged_path(tag: tag) %>
-<% end %>
-</p>
-</div>
 
 <div class="row"
 <%= link_to 'Edit', edit_song_path(@song) %> |
 <%= link_to 'Back', songs_path %>
+</div>
+<br>
+<div class="row">
+<h4>Tags</h4>
 </div>

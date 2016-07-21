@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   resources :songs
   resources :users
-  
+
   root 'home#index'
 
   # sign in routes
@@ -11,5 +11,6 @@ Rails.application.routes.draw do
 
   # routes for tags
   get 'tagged', to: 'songs#tagged', as: 'tagged'
+  get 'tags/:tag', to: 'songs#index', as: :tag
 
 end
