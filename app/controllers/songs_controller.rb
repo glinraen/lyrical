@@ -1,5 +1,5 @@
 class SongsController < ApplicationController
-  
+
   # GET /songs
   # GET /songs.json
   def index
@@ -27,14 +27,14 @@ class SongsController < ApplicationController
   # POST /songs
   # POST /songs.json
   def create
-    # @song = Song.new(song_params)
+      @song = Song.new(song_params)
       # Get user
       @user = current_user
       # Get song/s
       song_lyricsimage = song_params[:image]
       original_filename = "something.png"
       # Create temporary file
-    
+
       @file = PullTempfile.pull_tempfile(url: song_lyricsimage, original_filename: original_filename)
       # Create empty array for lyrics text
       @lyrics_array = [];
@@ -44,13 +44,14 @@ class SongsController < ApplicationController
         @lyrics_array.push(tag["lyrics"])
       end
 
+      p @lyrics_array
 
       if @song.save
         @lyrics_array.each do |value|
           @tag = Tag.new({song_id: @song.id, lyrics: value})
         end
       end
-    end
+    # end
 
     respond_to do |format|
       if @song.save
@@ -60,8 +61,9 @@ class SongsController < ApplicationController
         format.html { render :new }
         format.json { render json: @song.errors, status: :unprocessable_entity }
       end
-    end 
-
+    # redirect_to '/'
+    end
+  end
 
   # PATCH/PUT /songs/1
   # PATCH/PUT /songs/1.json
@@ -88,11 +90,11 @@ class SongsController < ApplicationController
   end
 
   def tagged
-    if params[:tag].present? 
+    if params[:tag].present?
       @songs = Song.tagged_with(params[:tag])
-    else 
+    else
       @songs = Song.all
-    end  
+    end
   end
 
 
@@ -105,7 +107,7 @@ class SongsController < ApplicationController
   # end
 
   private
-  
+
     # Never trust parameters from the scary internet, only allow the white list through.
     def song_params
       params.require(:song).permit(:title, :lyrics, :origin, :tag_list, :image)

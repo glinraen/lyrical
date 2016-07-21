@@ -1,20 +1,18 @@
 <div class="row form">
-   <div class="large-6 columns">
-	<h2 class="profileTitle titles">Sign In</h2>
-	<br>
-	<%= form_for @user, url: "/sessions", method: "post" do |f| %>
-		<div class="row form">
-		    <%= f.text_field :email, placeholder: "Email", class: "form-control"  %>
-		    <%= f.password_field :password, placeholder: "Password", class: "form-control"  %>
-		</div>
-    <br><br>
-    <div class="row">
-      <div class="large-12 columns large-offset-5">
-        <button type="submit" class="button interests">Sign In</button>
-      </div>
-    </div>
-  <% end %>
-  </div>
+  <div class="large-6 columns">
+	   <h2 class="profileTitle titles">Sign In</h2>
+	    <br>
+	     <%= form_for @user, url: "/sessions", method: "post" do |f| %>
+		     <div class="row form">
+		        <%= f.text_field :email, placeholder: "Email", class: "form-control"  %>
+		        <%= f.password_field :password, placeholder: "Password", class: "form-control"  %>
+		    </div>
+        <br><br>
+        <div class="row">
+          <div class="large-12 columns large-offset-5">
+            <button type="submit" class="button interests">Sign In</button>
+          </div>
+        </div>
+    <% end %>
   </div>
 </div>
-

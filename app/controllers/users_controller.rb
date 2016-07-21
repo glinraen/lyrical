@@ -35,7 +35,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     #respond_to do |format|
       if @user.save
-        login(user)
+        login(@user)
         flash[:success] = "Welcome to Hell!"
         redirect_to :user
       else
