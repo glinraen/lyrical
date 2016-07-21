@@ -46,11 +46,11 @@ class SongsController < ApplicationController
 
       p @lyrics_array
 
-      if @song.save
-        @lyrics_array.each do |value|
-          @tag = Tag.new({song_id: @song.id, lyrics: value})
-        end
-      end
+      # if @song.save
+      #  @lyrics_array.each do |value|
+        #  @tag = Tag.new({song_id: @song.id, lyrics: value})
+      #  end
+
     # end
 
     respond_to do |format|

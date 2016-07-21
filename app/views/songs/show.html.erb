@@ -1,28 +1,31 @@
 <p id="notice"><%= notice %></p>
-
+<div class="row"
 <p>
-  <h4>Title:</h4>
+  <h4>Title</h4>
   <%= @song.title %>
 </p>
 
 <p>
-  <strong>Lyrics:</strong>
+  <strong>Lyrics</strong>
   <%= @song.lyrics %>
 </p>
 
 <p>
-  <strong>Origin:</strong>
+  <strong>Origin</strong>
   <%= @song.origin %>
 </p>
+</div>
 
-<strong>Tags</strong>
+<div class="row">
 <p>
 <% @song.tags.any? %>
 	<% @song.tag_list.each do |tag| %>
 	<%= link_to tag, tagged_path(tag: tag) %>
 <% end %>
 </p>
+</div>
 
-
+<div class="row"
 <%= link_to 'Edit', edit_song_path(@song) %> |
 <%= link_to 'Back', songs_path %>
+</div>

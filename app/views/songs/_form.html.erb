@@ -13,27 +13,27 @@
 <div class="row form">
   <div class="large-6 columns">
     <div class="field">
-    <%= f.label :title %><br>
-    <%= f.text_field :title %>
+
+    <%= f.text_field :title, placeholder: "Title" %>
     </div>
     <div class="field">
-    <%= f.label :lyrics %><br>
-    <%= f.text_field :lyrics %>
+
+    <%= f.text_field :lyrics, placeholder: "Lyrics" %>
     </div>
     <div class="field">
-    <%= f.label :origin %><br>
-    <%= f.text_field :origin %>
+
+    <%= f.text_field :origin, placeholder: "Country (or Region) of Origin" %>
     </div>
     <div class="field">
-    <%= f.label :image %><br>
-    <%= f.text_field :image, placeholder: "Click Choose File to Upload", required: true %>
+
+    <%= f.text_field :image, placeholder: "Click Choose Image File to Upload" %>
     </div>
     <div class="container">
    <%= f.hidden_field :image, role: 'uploadcare-uploader' %>
   </div>
 
-  <%= f.label :tags %>
-  <%= f.text_field :tag_list %>
+  <br>
+  <%= f.text_field :tag_list, placeholder: "Add Tags with commas to separate" %>
 
     <div class="actions">
     <%= f.submit %>

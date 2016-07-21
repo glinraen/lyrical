@@ -28,15 +28,15 @@ body {
 }
 
 .css2 {
- 	font-size: 1.2em; 
+ 	font-size: 1.2em;
 }
 
 .css3 {
- 	font-size: 1.4em; 
+ 	font-size: 1.4em;
 }
 
 .css4 {
- 	font-size: 1.6em; 
+ 	font-size: 1.6em;
 }
 
 @import "compass/css3";
@@ -46,7 +46,13 @@ body {
 }
 .login-box {
   background: #fff;
-  border: 1px solid #ddd; 
+  border: 1px solid #ddd;
   margin: 100px 0;
   padding: 40px 20px 0 20px;
+}
+
+.parent {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
