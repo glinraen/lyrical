@@ -26,7 +26,7 @@
     </div>
     <div class="field">
     <%= f.label :image %><br>
-    <%= f.text_field :image, placeholder: "Click Choose File to Upload" %>
+    <%= f.text_field :image, placeholder: "Click Choose File to Upload", required: true %>
     </div>
     <div class="container">
    <%= f.hidden_field :image, role: 'uploadcare-uploader' %>
@@ -42,5 +42,3 @@
   </div>
 </div>
 <% end %>
-
-
