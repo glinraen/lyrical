@@ -1,18 +1,16 @@
 <div class="row formCard">
+	<% if new_user %>
 	<h2 class="profileTitle titles">Sign Up</h2>
+	<% end %>
   <br>
-  <%= form_for(@user) do |f| %>
-
-</div>
-
-
-    <div class="row form">
-    	<div class="large-6 columns">
-
-    	
-        <%= f.text_field :email, placeholder: "Email", class: "form-control"  %>
-        <%= f.password_field :password, placeholder: "Password", class: "form-control"  %>
-        	<div>
-          <button type="submit" class="button interests">Submit</button>
-          </div>
-    <% end %>
+	<% options = new_user ? {url: users_path, method: "POST"} : {url: user_path, method: "PATCH"} %>
+	<%= form_for @user, options do |f| %>
+  <div class="row form">
+  	<div class="large-6 columns">
+		  <%= f.text_field :user_name, placeholder: "Username", class: "form-control" %>
+		  <%= f.text_field :email, placeholder: "Email", class: "form-control"  %>
+		  <%= f.password_field :password, placeholder: "Password", class: "form-control"  %>
+	  	<button type="submit" class="button interests">Submit</button>
+		</div>
+	</div>
+  <% end %>

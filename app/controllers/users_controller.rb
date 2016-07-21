@@ -20,13 +20,11 @@ class UsersController < ApplicationController
   # GET /users/new
   def new
     @user = User.new
-    render :new
   end
 
   # GET /users/1/edit
   def edit
   	@user = User.find(params[:id])
-    redirect_to :edit_user
   end
 
   # POST /users
@@ -77,6 +75,6 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:email, :password)
+      params.require(:user).permit(:user_name, :email, :password)
     end
 end

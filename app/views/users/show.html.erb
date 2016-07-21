@@ -1,15 +1,12 @@
 <p>
   <h3>Welcome, <%= @user.user_name %>!</h3>
-  
+
 </p>
 <p>
 	<strong>Email:</strong>
 	<%= @user.email %>
 </p>
-<p>
-	<strong>Password:</strong>
-	<%= @user.password %>
-</p>
+
 
 <p>
 <%= link_to 'Edit Your Email and/or Password', edit_user_path(@user) %> |
@@ -35,8 +32,3 @@
 <div>
   <%= button_to 'New Song', new_song_path, :method => :get%>
 </div>
-
-
-
-
-
