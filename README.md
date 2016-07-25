@@ -4,7 +4,7 @@
 
 ### Intro
 
-The concept for Lyrical is a repositor for music files. Many songs are online, in many formats that are difficult to read and to keep neat. I wanted a place to upload collections of lyrics and music that would keep one format. It is a full stack web application.
+The concept for Lyrical is a repository for music files. Many songs are online, in many formats that are difficult to read and to keep neat. I wanted a place to upload collections of lyrics and music that would keep one format. It is a full stack web application.
 
 ### Technologies
 
